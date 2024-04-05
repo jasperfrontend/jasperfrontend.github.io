@@ -1,0 +1,138 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html, body {
+  font-family: "Poppins", sans-serif;
+  background-color: #fff;
+  height: 100%;
+  width: 100vw;
+  overflow: hidden;
+}
+body .hidden {
+  display: none;
+  visibility: hidden;
+}
+.container {
+  height: 100%;
+  display: grid;
+  grid-template: repeat(3, 1fr) / repeat(6, 1fr);
+  gap: 1em;
+}
+.core {
+  padding: .5em;
+}
+.background-image {
+  grid-column: 1 / span 6;
+  grid-row: 1 / span 3;
+  background-size: 400% 400%;
+  background-image: linear-gradient(
+    to right bottom, 
+    #d54396, 
+    #e96c87, 
+    #eb7b61, 
+    #f0a753, 
+    #c0ac31, 
+    #8eae2f, 
+    #5db558, 
+    #00b982, 
+    #00aea6, 
+    #009fc0, 
+    #008cc7, 
+    #4477bb
+    );
+  animation: gradient-animation 40s ease infinite;
+}
+
+.clips-player {
+  grid-column: 1 / span 6;
+  grid-row: 1 / span 3;
+}
+.clips-player iframe {
+  padding: 2em; /* increase for space between video player and animated gradient background */
+}
+.no-padding .clips-player iframe {
+  padding: 0;
+}
+.no-padding .clips-player iframe video {
+  border-radius: 0;
+}
+
+.chat {
+  display: grid;
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+}
+.chat #chat {
+  background-color: #181818;
+  background-color: rgba(15,15,15,.5);
+  backdrop-filter: blur(10px);
+  border: 1px solid #181818;
+  border-left: 0;
+  border-radius: 0 20px 20px 0;
+  box-shadow: 0 0 10px rgba(15,15,15,.15);
+  animation: fadeInLeftBig 2s ease;
+  text-shadow: 0 0 4px rgba(15,15,15,.15);
+}
+.chat #chat h2 {
+  color: #fff;
+  padding-left: 10px;
+}
+
+.starting-soon {
+  display: grid;
+  grid-column: 3 / span 2;
+  grid-row: 3;
+  align-content: end; 
+}
+.starting-soon #starting-soon {
+  display: grid;
+  text-align: center;
+  padding: 2em 0;
+  background-color: #fff;
+  background-color: rgba(255,255,255,.8);
+  border: 1px solid #ececec;
+  border-radius: 20px 20px 0 0;
+  box-shadow: 0 0 10px rgba(15,15,15,.15);
+  backdrop-filter: blur(10px);
+  animation: fadeInUpBig 2s ease;
+}
+.antiscuff-logo {
+  grid-column-start: 6;
+  grid-row-start: 3;
+  place-items: end / end;
+}
+.antiscuff-logo #antiscuff-logo {
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+.antiscuff-logo #antiscuff-logo p {
+  line-height: 1;
+  color: #fff;
+  position: relative;
+  top: 10px;
+  font-size: 70%;
+  text-shadow: 0 0 4px rgba(15,15,15,.15);
+}
+.antiscuff-logo #antiscuff-logo svg {
+  max-width: 150px;
+}
+.antiscuff-logo #antiscuff-logo svg path {
+  -webkit-filter: drop-shadow( 3px 3px 2px rgba(15,15,15, .15));
+  filter: drop-shadow( 3px 3px 2px rgba(15,15,15, .15));
+}
+
+video {
+  border-radius: 0 !important;
+}
+
+@keyframes gradient-animation {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+

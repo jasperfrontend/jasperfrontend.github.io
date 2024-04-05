@@ -1,0 +1,533 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Twitch Clips Player</title>
+    <meta name="description" content="This is a Twitch Clips Player, browser source overlay for OBS. Automatically play clips from your channel or other channels. Keep your viewers entertained on your BRB or starting soon scenes." />
+    <meta name="keywords" content="Twitch, clips player, overlay" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Twitch Clips Player" />
+    <meta property="og:description" content="This is a Twitch Clips Player, browser source overlay for OBS. Automatically play clips from your channel or other channels. Keep your viewers entertained on your BRB or starting soon scenes." />
+    <meta property="og:url" content="" />
+    <meta property="og:site_name" content="Twitch Clips Player" />
+    <script src="assets/js/jquery-3.6.0.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.js"></script>
+    <link rel="stylesheet" href="assets/css/bootstrap452.min.css">
+    <link rel="stylesheet" href="assets/css/dark.min.css">
+    <link rel="apple-touch-icon" sizes="57x57" href="assets/images/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="assets/images/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="assets/images/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/images/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="assets/images/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="assets/images/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="assets/images/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="assets/images/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/images/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/images/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
+</head>
+<style>
+    .hide {
+        display: none;
+    }
+</style>
+<body onload="onInit()">
+<div class="container">
+    <div class="row pt-md-4">
+        <ul class="nav nav-pills">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle active" data-toggle="dropdown" href="#" role="button"
+                   aria-haspopup="true" aria-expanded="false">Twitch Tools</a>
+                <div class="dropdown-menu" id="main-nav">
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="row">
+        <div class="col-10">
+            <h1 class="h3 pt-4 pl-lg-4 text-center">Twitch Clips Player</h1>
+        </div>
+        <div class="col-2 text-center">
+            <img src="assets/images/robot.gif" style="width: 60px;" alt="tekbot_v1" title="Hi, I'm tekbot_v1" id="tekbotImg" onmouseover="onHover();" onmouseout="offHover();">
+        </div>
+    </div>
+    <br>
+    <div class="card">
+        <div class="card-body">
+            <h2>Twitch Clips Player Overlay</h2>
+            <p>This grabs your Twitch clips and plays them one after the other in a loop. Keep your viewers entertained
+                on your BRB or starting soon scenes.</p> 
+            <span class="text-info">FEATURES:</span>
+            <ul>
+                <li>!clipso @teklynk to play a clip from a channel while the clips reel is playing. This will immediately play the clip from the channel and then continue on with the rest of the clips reel.</li>
+                <li>Control the clips from Twitch chat. !clipskip, !clippause, !clipplay, !clipreload. Limited to Mods and Streamer.</li>
+                <li>Show clips from channels that you follow. Grabs the most recent 700 channels that you follow.</li>
+                <li>Use a custom command to start the clips reel and restrict it to Mods only.</li>
+                <li>Type "!mycommand @teklynk @coolstreamer @gamer123 @tekbot" which will play the clips reel for only those channels.</li>
+                <li>Type "!mycommand" while the clips reel is playing to skip to the next clip.</li>
+                <li>Type "!mycommand stop" to stop the clips player.</li>
+                <li><strong>Date Range option:</strong> This will grab a clip from within the last 5days, 10day, 30days... If no clips exist, then skip to the next channel.</li>
+                <li><strong>Show clip details panel:</strong> This will display a panel in the lower third of the overlay that contains details about the clip. This can use variables:{channel},{title},{game},{creator_name},{created_at}.</li>
+            </ul>
+            <p>In OBS, set the browser source to: "Shutdown source when not visible" and "Refresh browser when scene becomes active". This will prevent the clips player from playing in the background. It will also reload/refresh the clips player when the source becomes active.</p>
+        </div>
+    </div>
+    <br>
+    <div class="alert alert-dark" role="alert"><b>* NEW</b> <small>(September 2023)</small><br>Access Token is now required if you would like to show clips from channels that you follow or show a message in chat.<br>
+        <div class="form-label-group mb-4 mt-2">
+            <div class="mb-2 mt-2">
+                <a href="https://id.twitch.tv/oauth2/authorize?response_type=token&client_id=cuql1zod4eeabjr3cnc6adjn9ezro4&redirect_uri=https://twitch-clips-player.pages.dev&scope=chat:read+chat:edit+user:read:follows&force_verify=true"
+                   target="_self"><img src="assets/images/connect.png"></a>
+            </div>
+            <label for="ref">Access token</label>
+            <input type="password" id="ref" class="form-control">
+            <span id="show_ref"
+                  style="cursor:pointer;text-align:left;display:inline-block;width:70px;margin-top: 4px;font-size:smaller;vertical-align:top;"
+                  title="Show/Hide">show
+            </span>
+            </div>
+    </div>
+    
+    <div class="form-label-group mb-2">
+        <label for="mainChannel">Main Twitch Channel</label>
+        <input type="text" id="mainChannel" class="form-control" value="" placeholder="MrCoolStreamer" size="50">
+    </div>
+    <div class="form-label-group mb-2">
+        <label for="channel">Twitch channel(s) to pull clips from
+            <small class="text-warning">* This can be a single channel or a comma separated list of channels</small>
+        </label>
+        <textarea id="channel" rows="3" class="form-control" style="min-height: 100px;"
+               placeholder="MrCoolStreamer,GamerGamingGames,StreamBean,AnotherStreamer,WillStreamForBeer"></textarea>
+    </div>
+    <div class="form-check mb-4">
+        <input class="form-check-input" type="checkbox" value="" id="showFollowing">
+        <label class="form-check-label" for="showFollowing">
+            Show clips from channels that you follow <small class="text-warning">* Requires Twitch Access Token</small>
+        </label>
+    </div>
+    <div class="form-check mb-4">
+        <input class="form-check-input" type="checkbox" value="" id="streamerOnly">
+        <label class="form-check-label" for="streamerOnly">
+            Show clips created by the channel owner/streamer (this will reduce the number of clips that get played)
+        </label>
+    </div>
+    <div class="form-label-group mb-4" id="customCommandOptions">
+        <div class="form-label-group mb-2">
+            <label for="command">Custom Command <small>(Optional)</small>
+                <small class="text-warning">* If a custom command is Not set, the clips player will start playing as soon as the scene is active.</small>
+            </label>
+            <input type="text" id="command" class="form-control" value="" placeholder="playclips" size="50">
+        </div>
+        <div class="form-check mb-2">
+            <input class="form-check-input" type="checkbox" value="" id="modOnly" disabled>
+            <label class="form-check-label" for="modOnly">
+                Mods Only
+            </label>
+        </div>
+    </div>
+    <div class="form-group range-slider mt-4">
+        <label for="limit">Number of clips to pull
+            <small>(Max is 100)</small>
+        </label>
+        <input type="range" max="100" min="1" step="1" class="form-control range-slider-range" id="limit"
+               value="20" style="height: 0;">
+        <small class="text-muted range-slider-value"></small>
+        <small class="text-muted range-slider-value">Clips</small>
+    </div>
+    <div class="form-group range-slider mt-4">
+        <label for="dateRange">Only show clips from within a Date Range <small>(Optional)</small> <small class="text-warning">* 0 Day(s) = OFF</small>
+        </label>
+        <input type="range" max="365" min="0" step="1" class="form-control range-slider-range" id="dateRange"
+               value="0" style="height: 0;">
+        <small class="text-muted range-slider-value"></small>
+        <small class="text-muted range-slider-value">Day(s)</small>
+    </div>
+    <div class="form-label-group mb-4">
+        <label for="gameTitle">Filter clips by Game Title or Category</label>
+        <input type="text" id="gameTitle" class="form-control" value="" placeholder="Retro" size="50">
+    </div>
+    <div class="form-check mb-2">
+        <input class="form-check-input" type="checkbox" value="" id="shuffle">
+        <label class="form-check-label" for="shuffle">
+            Randomize clips
+        </label>
+    </div>
+    <div class="form-check mb-2">
+        <input class="form-check-input" type="checkbox" value="" id="showText">
+        <label class="form-check-label" for="showText">
+            Show channel name on top of video
+        </label>
+    </div>
+    <div class="form-label-group mt-2 mb-4 ml-4 hide" id="showCustomText">
+        <label for="customText">Custom message <small>(Optional)</small>
+        </label>
+        <input type="text" id="customText" class="form-control" value=""
+               placeholder="Go check out {channel}" size="255">
+    </div>
+    <div class="form-check mb-2">
+        <input class="form-check-input" type="checkbox" value="" id="showDetails">
+        <label class="form-check-label" for="showDetails">
+            Show clip details panel
+        </label>
+    </div>
+    <div class="form-label-group mt-2 mb-4 ml-4 hide" id="showDetailsText">
+        <label for="detailsText">Custom clip details panel text <small>(Optional)</small>
+        </label>
+        <textarea class="form-control" id="detailsText" rows="4" placeholder="{title}
+While streaming {game}
+Clipped by {creator_name} {created_at}"></textarea>
+    </div>
+    <div class="form-check mb-4">
+        <input class="form-check-input" type="checkbox" value="" id="showMsg">
+        <label class="form-check-label" for="showMsg">
+            Show chat message: "Go check out {channel}! - They were playing: {game} - {title} - {url}"
+            <small class="text-warning">* Requires Twitch Access Token</small>
+        </label>
+        <div class="form-label-group mt-2 mb-4 ml-1 hide" id="customMsgTxt">
+            <div class="form-label-group mb-4">
+                <label for="customMsg">Custom Message
+                    <small>(Optional)</small>
+                </label>
+                <input type="text" id="customMsg" class="form-control" value=""
+                       placeholder="Go check out {channel}! - They were playing: {game} - {title} - {url}" size="250">
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="themeOption">Theme options</label>
+        <select class="form-control" id="themeOption">
+            <option value="0">None</option>
+            <option value="1">Slide in fancy skewed</option>
+            <option value="2">Slide in basic</option>
+            <option value="3">Outside the box</option>
+        </select>
+    </div>
+    <div class="form-group purple-border">
+        <label for="customCss">Custom CSS
+            <small> (Copy and paste into the OBS browser source Custom CSS section and modify as needed. <a
+                    href="https://www.w3schools.com/Css/" target="_blank">CSS Tutorial</a>)
+            </small>
+        </label>
+        <textarea class="form-control" id="customCss" rows="3" style="min-height: 200px;" readonly>
+#container {
+    display: block;
+    padding: 4px;
+    margin: 4px;
+    text-align: center;
+}
+
+video {
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+    border-radius: 10px;
+}
+
+#text-container {
+    width: 100%;
+    position: absolute;
+    top: 10vw;
+}
+
+.title-text {
+    font-family: Basic, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 5vw;
+    word-wrap: break-word;
+    color: #fff;
+    text-align: center;
+    text-shadow: 2px 2px #000;
+}
+
+#details-container {
+    position: absolute;
+    top: 36vw;
+    background: #00000090;
+    padding: 12px 24px 12px 24px;
+    margin-right: 24px;
+    border-radius: 0px 24px 24px 0px;
+    width: auto;
+    animation: fadeout 15s forwards;
+}
+
+#details-container .details-text {
+    font-family: Basic, Helvetica, sans-serif;
+    font-weight: bold;
+    word-wrap: break-word;
+    color: #fff;
+    text-align: left;
+    text-shadow: 2px 2px #000;
+}
+
+#details-container .details-text.item-0 {
+    font-size: 3vw;
+    font-weight: bold;
+}
+
+#details-container .details-text.item-1 {
+    font-size: 2.5vw;
+    font-weight: normal;
+}
+
+#details-container .details-text.item-2 {
+    font-size: 2vw;
+    font-weight: normal;
+}
+
+#details-container .details-text.item-3 {
+    font-size: 1.5vw;
+    font-weight: normal;
+}
+        </textarea>
+    </div>
+    <br>
+    <button class="btn btn-lg btn-success btn-block" id="generate_button" type="button">Generate Overlay Link</button>
+    <br>
+    <div id="overlaylink" class="hide"></div>
+</div>
+<script>
+    function onInit() {
+
+        let url = window.location.href;
+
+        if (url.indexOf('#access_token') !== -1) {
+            // extract the access_token from the url
+            let access_token = new URL(url).hash.split('&').filter(function (el) {
+                if (el.match('access_token') !== null) return true;
+            })[0].split('=')[1];
+            // fill input with token value
+            document.getElementById("ref").value = access_token;
+            // Save token to localstorage
+            localStorage.setItem("TwitchClipsRef", access_token);
+            // Redirect to default page after getting token
+            window.location.href = "https://twitch-clips-player.pages.dev";
+        } else {
+            document.getElementById("ref").value = localStorage.getItem("TwitchClipsRef");
+        }
+
+        let rangeSlider = function rangeSlider() {
+            let slider = $('.range-slider'),
+                range = $('.range-slider-range'),
+                value = $('.range-slider-value');
+
+            slider.each(function () {
+
+                value.each(function () {
+                    let value = $(this).prev().attr('value');
+                    $(this).html(value);
+                });
+
+                range.on('input', function () {
+                    $(this).next(value).html(this.value);
+                });
+            });
+        };
+
+        document.getElementById("mainChannel").value = localStorage.getItem("TwitchClipsMainAccount");
+        document.getElementById("ref").value = localStorage.getItem("TwitchClipsRef");
+        document.getElementById("channel").value = localStorage.getItem("TwitchClipsChannel");
+        document.getElementById("customMsg").value = localStorage.getItem("TwitchClipsCustomMsg");
+        document.getElementById("command").value = localStorage.getItem("TwitchClipsCommand");
+        document.getElementById("customText").value = localStorage.getItem("TwitchClipsCustomText");
+        document.getElementById("gameTitle").value = localStorage.getItem("TwitchClipsGameTitle");
+
+        if (document.getElementById("command").value !== "") {
+            document.getElementById("modOnly").removeAttribute('disabled');
+        }
+
+        // Auto grow textarea onload
+        document.getElementById("channel").style.height = "";
+        document.getElementById("channel").style.height = Math.min(document.getElementById("channel").scrollHeight, 300) + "px";
+
+        rangeSlider();
+    }
+
+    // Auto grow textarea on input change
+    document.getElementById("channel").oninput = function() {
+        document.getElementById("channel").style.height = "";
+        document.getElementById("channel").style.height = Math.min(document.getElementById("channel").scrollHeight, 300) + "px";
+    };
+
+    // Check if any input fields have changed
+    $(":text,textarea,select,:checkbox,input[type=range],input[type=password]").on('change', function (e) {
+        $("#overlaylink").addClass("hide");
+    });
+
+    //show following
+    document.getElementById("showFollowing").addEventListener("click", function (e) {
+        document.getElementById("channel").toggleAttribute('disabled');
+    }, false);
+
+    //show chat message
+    document.getElementById("showMsg").addEventListener("click", function (e) {
+        document.getElementById("customMsgTxt").classList.toggle('hide');
+    }, false);
+
+    // show custom text input
+    document.getElementById("showText").addEventListener("click", function (e) {
+        document.getElementById("showCustomText").classList.toggle('hide');
+    }, false);
+
+    // show custom details input
+    document.getElementById("showDetails").addEventListener("click", function (e) {
+        document.getElementById("showDetailsText").classList.toggle('hide');
+    }, false);
+
+    // check if command input has a value
+    document.getElementById("command").addEventListener("keyup", function (e) {
+        if (document.getElementById("command").value !== "") {
+            document.getElementById("modOnly").removeAttribute('disabled');
+        } else {
+            document.getElementById("modOnly").setAttribute('disabled', 'disabled');
+            document.getElementById("modOnly").checked = false;
+        }
+    }, false);
+
+    document.getElementById("show_ref").addEventListener("click", function (e) {
+        if (document.getElementById("show_ref").innerText === "hide") {
+            document.getElementById("show_ref").innerText = "show";
+            document.getElementById("ref").setAttribute('type', 'password');
+        } else {
+            document.getElementById("show_ref").innerText = "hide";
+            document.getElementById("ref").setAttribute('type', 'text');
+        }
+    }, false);
+
+    document.getElementById("generate_button").addEventListener("click", function (e) {
+        let channel = document.getElementById("channel").value.trim();
+        channel = channel.replace(/\s+/g, ""); // remove white space
+        let mainChannel = document.getElementById("mainChannel").value.trim();
+        let ref = document.getElementById("ref").value.trim();
+        let limit = document.getElementById("limit").value;
+        let dateRange = document.getElementById("dateRange").value;
+        let themeOption = document.getElementById("themeOption").value;
+        let shuffle = document.getElementById("shuffle").checked;
+        let showText = document.getElementById("showText").checked;
+        let showDetails = document.getElementById("showDetails").checked;
+        let showFollowing = document.getElementById("showFollowing").checked;
+        let streamerOnly = document.getElementById("streamerOnly").checked;
+        let so = document.getElementById("showMsg").checked;
+        let customMsg = document.getElementById("customMsg").value.trim();
+        let modOnly = document.getElementById("modOnly").checked;
+        let command = document.getElementById("command").value.trim();
+        command = command.replace('!', '');
+        let customText = document.getElementById("customText").value.trim();
+        let detailsText = document.getElementById("detailsText").value.trim();
+        let gameTitle = document.getElementById("gameTitle").value.trim();
+        let clientId = 'cuql1zod4eeabjr3cnc6adjn9ezro4';
+
+        localStorage.setItem("TwitchClipsMainAccount", mainChannel.toLowerCase().trim());
+        localStorage.setItem("TwitchClipsRef", ref.trim());
+        localStorage.setItem("TwitchClipsClientId", clientId.trim());
+        localStorage.setItem("TwitchClipsChannel", channel.toLowerCase().trim());
+        localStorage.setItem("TwitchClipsCustomMsg", customMsg.trim());
+        localStorage.setItem("TwitchClipsCommand", command.trim());
+        localStorage.setItem("TwitchClipsCustomText", customText.trim());
+        localStorage.setItem("TwitchClipsGameTitle", gameTitle.trim());
+
+        // reload the textarea with the cleaned up channel list (spaces removed).
+        document.getElementById("channel").value = localStorage.getItem("TwitchClipsChannel");
+
+        if (!so) {
+            customMsg = '';
+        }
+
+        if (!showFollowing) {
+            clientId = '';
+        }
+
+        if (showFollowing) {
+            channel = '';
+        }
+
+        if (so && !ref) {
+            alert('Twitch access token is required if show chat message is checked!');
+        }
+
+        if (showFollowing && !ref) {
+            alert('Twitch access token is required if show following is checked!');
+        }
+
+        if (so && !mainChannel) {
+            alert('Twitch main channel is not set');
+        }
+
+        if (command && !mainChannel) {
+            alert('Twitch main channel is not set');
+        }
+
+        if (showFollowing && !mainChannel) {
+            alert('Twitch main channel is not set');
+        }
+
+        if (!channel && !showFollowing) {
+            alert('Twitch channel(s) is not set or Show clips from channels that you follow is not checked');
+        }
+
+        let hardCodedCommands = ['clipplay', 'clippause', 'clipskip', 'clipreload'];
+
+        if (hardCodedCommands.includes(command)) {
+            alert(command + ' can not be used. Please choose a different command name.');
+        }
+
+        if (showDetails && !detailsText) {
+             detailsText = "{title}\nWhile streaming {game}\nClipped by {creator_name} {created_at}";
+        }
+
+        // build overlay url
+        let srcURL = window.location.protocol + "//" + window.location.host + window.location.pathname;
+        let fullUrl = srcURL + "clips.html?channel=" + channel + "&limit=" + limit + "&dateRange=" + dateRange + "&themeOption=" + themeOption + "&shuffle=" + shuffle + "&showText=" + showText + "&customMsg=" + encodeURIComponent(customMsg) + "&showDetails=" + showDetails + "&detailsText=" + encodeURIComponent(detailsText) + "&mainAccount=" + mainChannel + "&so=" + so + "&command=" + command + "&modOnly=" + modOnly + "&customText=" + encodeURIComponent(customText) + "&showFollowing=" + showFollowing + "&streamerOnly=" + streamerOnly + "&gameTitle=" + gameTitle + "&ref=" + btoa(ref) + "&clientId=" + btoa(clientId);
+        fullUrl = fullUrl.replace("index.htmlclips.html", "clips.html");
+        document.getElementById("overlaylink").classList.remove("hide");
+        document.getElementById("overlaylink").innerHTML = "<p>Add this link as a browser source in OBS.<br>" +
+            "<a style='word-break:break-all;' href='" + fullUrl + "' target='_blank'>" + fullUrl + "</a><br><span class='text-warning'><small>* Never share this url with anyone or show it on stream!</small></span></p>";
+
+    });
+</script>
+<div class="text-right m-4">
+    <a class="btn btn-link" href="https://github.com/teklynk/twitch_clips_player/blob/main/README.md"
+       target="_blank">Help</a>
+    <a class="btn btn-link" href="https://github.com/teklynk/twitch_clips_player" target="_blank">Github</a>
+    <script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script>
+    <script type='text/javascript'>kofiwidget2.init('Donate', '#191d21', 'O4O0BWF2E');kofiwidget2.draw();</script> 
+</div>
+<script>
+    // tekbot_v1 mouse hover action
+    function onHover() {
+        $("#tekbotImg").attr('src', 'assets/images/robot_loop.gif');
+    }
+    function offHover() {
+        $("#tekbotImg").attr('src', 'assets/images/robot.gif');
+    }
+
+    // Json data - Ajax call
+    let nav_json = JSON.parse($.getJSON({
+        'url': "https://twitchapi.teklynk.com/getnav.php",
+        'async': false
+    }).responseText);
+
+    $.each(nav_json, function (i, val) {
+        $('<a class="dropdown-item" href="' + val.url + '">' + val.name + '</a>').appendTo('#main-nav');
+    });
+</script>
+<style>
+    .btn-container {
+        min-width: auto !important;
+        padding-left: 20px;
+    }
+    span.kofitext {
+        color: #adb5bd !important;
+    }
+    a.kofi-button {
+        border-radius: none;
+        box-shadow: none !important;
+        min-width: auto !important;
+        padding: 0 !important;
+        line-height: unset !important;
+    }
+</style>
+</body>
+</html>
