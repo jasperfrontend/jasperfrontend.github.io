@@ -13,3 +13,9 @@ const text = urlParams.get("text");
 const chat = urlParams.get("chat");
 const clips = urlParams.get("clips");
 ```
+
+## Example OBS URL
+Be sure to set to 1920x1080.
+Remove any css in the OBS browser source settings
+
+[https://jasperfrontend.github.io/soon.html?streamer=xqc](https://jasperfrontend.github.io/soon.html?streamer=xqc)
