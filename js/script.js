@@ -1,6 +1,5 @@
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
-console.log("Query String: " + queryString + ". urlParams: " + urlParams);
 const logo = urlParams.get("logo");
 const background = urlParams.get("background");
 const streamer = urlParams.get("streamer");
@@ -39,6 +38,8 @@ if(chat) {
 }
 if(background) {
     gradientBackground.classList.add("hidden");
+    var root = document.getElementsByTagName( 'html' )[0];
+    root.setAttribute( 'class', 'background-hidden' );
 }
 if(text) {
     textHeading.innerHTML = text;

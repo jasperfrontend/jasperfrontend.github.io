@@ -14,6 +14,16 @@ body .hidden {
   display: none;
   visibility: hidden;
 }
+.background-hidden,
+.background-hidden body {
+  background: rgba(0,0,0,0);
+}
+
+.background-hidden .chat #chat,
+.background-hidden .starting-soon #starting-soon {
+  backdrop-filter: none;
+}
+
 .container {
   height: 100%;
   display: grid;

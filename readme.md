@@ -26,9 +26,3 @@ const text = urlParams.get("text"); // accepts any text that will display in the
 const chat = urlParams.get("chat"); // accepts anything to HIDE the chat
 const clips = urlParams.get("clips"); // accepts anything to HIDE the clips player
 ```
-
-## Example OBS URL
-Be sure to set to 1920x1080.
-Remove any css in the OBS browser source settings
-
-[https://jasperfrontend.github.io/soon.html?streamer=xqc](https://jasperfrontend.github.io/soon.html?streamer=xqc)
