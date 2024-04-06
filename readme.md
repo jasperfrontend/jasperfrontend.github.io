@@ -9,7 +9,7 @@ Remove the logo, change the text, remove the chat, remove the background\*
 [https://jasperfrontend.github.io/soon.html?streamer=xqc&logo=0&text=Custom%20Text!&chat=0&background=0](https://jasperfrontend.github.io/soon.html?streamer=xqc&logo=0&text=Custom%20Text!&chat=0&background=0)
 
 Just custom text, remove everything else.
-[https://jasper.monster/as/default-overlay/soon.html?background=0&text=Just Custom Text&logo=0&chat=0&clips=0](https://jasper.monster/as/default-overlay/soon.html?background=0&text=Just Custom Text&logo=0&chat=0&clips=0)
+[https://jasper.monster/as/default-overlay/soon.html?background=0&text=Just%20Custom%20Text&logo=0&chat=0&clips=0](https://jasper.monster/as/default-overlay/soon.html?background=0&text=Just Custom Text&logo=0&chat=0&clips=0)
 
 \* Custom background coming in a future update.
 
