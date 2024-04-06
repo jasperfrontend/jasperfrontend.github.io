@@ -1,5 +1,5 @@
-# Default OBS Overlay
-This is an OBS overlay. Example implementation:
+# OBS Video Player Overlay
+This is an OBS overlay. It plays video thanks to [teklynk/twitch_clips_player](https://github.com/teklynk/twitch_clips_player). 
 
 ## Default implementation
 Add `?streamer=streamernamehere` to the end of the URL to show clips!
