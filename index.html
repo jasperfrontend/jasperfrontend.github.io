@@ -20,7 +20,7 @@
             <a href="https://github.com/jasperfrontend/jasperfrontend.github.io?tab=readme-ov-file">urlParams</a>.</p>
           </div>
         </div>
-        <p><a class="btn btn-dark" href="https://github.com/jasperfrontend/jasperfrontend.github.io" target="_blank">View on Github</a></p>
+        <p><a class="btn btn-primary" href="https://github.com/jasperfrontend/jasperfrontend.github.io" target="_blank">View on Github</a></p>
         <p>This is a simple OBS Clip Player overlay that can do quite a cool things under the hood.</p>
         <p><img class="img-fluid" src="https://jasper.monster/sharex/xqc-example.png" alt="OBS Twitch Clips Player"></p>
         <h2>Features</h2>
@@ -34,11 +34,14 @@
           <li>Easy to embed in your OBS as a Browser Source</li>
         </ul>
 
+        <p>Follow the <a href="https://github.com/users/jasperfrontend/projects/1/views/1" target="_blank">Planned Features</a>.</p>
+
         <div class="card mt-4 mb-4">
           <div class="card-body">  
             <h2>How to use?</h2>
-            <p><a href="https://github.com/jasperfrontend/jasperfrontend.github.io/archive/refs/heads/main.zip">Download the code</a> and extract the .zip file to a location on your computer.</p>
-            <p>Browse to the folder that you just extracted from the .zip file and open soon.html in your web browser. Nothing will show up, but we're going to change that! Please read on.</p>
+            <p><a class="btn btn-sm btn-primary" href="https://github.com/jasperfrontend/jasperfrontend.github.io/archive/refs/heads/main.zip">Download the code</a> and extract the .zip file to a location on your computer.</p>
+            <p>Browse to the folder that you just extracted from the .zip file and open <kbd>soon.html</kbd> in your web browser by double-clicking on the file.</p>
+            <p>Not much will show up just yet, but we're going to change that! Please read on to find out how it works.</p>
           </div>
         </div>
         <div class="card mt-4 mb-4">
@@ -46,49 +49,122 @@
             <h3>How to show the Twitch Clips Player</h3>
             <p>Change the URL in your browser overlay from <code>soon.html</code> to <code>soon.html?streamer=YourTwitchName</code>, replacing
             <kbd>YourTwitchName</kbd> with your actual Twitch username.</p>
-            <p><a class="btn btn-dark" href="https://jasperfrontend.github.io/soon.html?streamer=xqc" target="_blank">See it in action</a></p>
+            <p><a class="btn btn-primary" href="https://jasperfrontend.github.io/soon.html?streamer=xqc" target="_blank">See it in action</a></p>
+            <p>
+              <a data-bs-toggle="collapse" href="#twitch-clip-player" role="button" aria-expanded="false" aria-controls="collapseExample">
+                Toggle Screenshot
+              </a>
+            </p>
+            <div id="twitch-clip-player" class="collapse">
+              <div class="card card-body">
+                <p><img class="img-fluid" src="https://jasper.monster/sharex/firefox_NbZIabhvBJ.jpg" alt="The Twitch Clip Player in action"></p>
+              </div>
+            </div>
           </div>
         </div>
         <div class="card mt-4 mb-4">
           <div class="card-body"> 
             <h3>How to hide the live chat box</h3>
-            <p>Add to the end of the browser overlay URL <code>&amp;chat=0</code>.</p>
-            <p><a class="btn btn-dark" href="https://jasperfrontend.github.io/soon.html?streamer=xqc&chat=0" target="_blank">See it in action</a></p>
+            <p>Add to the end of the browser overlay URL: <code>&amp;chat=0</code></p>
+            <p><a class="btn btn-primary" href="https://jasperfrontend.github.io/soon.html?streamer=xqc&chat=0" target="_blank">See it in action</a></p>
+            <p>
+              <a data-bs-toggle="collapse" href="#hide-chat-box" role="button" aria-expanded="false" aria-controls="collapseExample">
+                Toggle Screenshot
+              </a>
+            </p>
+            <div id="hide-chat-box" class="collapse">
+              <div class="card card-body">
+                <p><img class="img-fluid" src="https://jasper.monster/sharex/firefox_gu0alQ0i31.jpg" alt="Hide the chatbox"></p>
+              </div>
+            </div>
           </div>
         </div>
         <div class="card mt-4 mb-4">
           <div class="card-body"> 
-        <h3>How to hide the textbox</h3>
-        <p>Add to the end of the browser overlay URL <code>&amp;textbox=0</code>.</p>
-        <p><a class="btn btn-dark" href="https://jasperfrontend.github.io/soon.html?streamer=xqc&chat=0&textbox=0" target="_blank">See it in action</a></p>
-        </div>
+            <h3>How to hide the textbox</h3>
+            <p>Add to the end of the browser overlay URL: <code>&amp;textbox=0</code></p>
+            <p><a class="btn btn-primary" href="https://jasperfrontend.github.io/soon.html?streamer=xqc&chat=0&textbox=0" target="_blank">See it in action</a></p>
+            <p>
+              <a data-bs-toggle="collapse" href="#hide-text-box" role="button" aria-expanded="false" aria-controls="collapseExample">
+                Toggle Screenshot
+              </a>
+            </p>
+            <div id="hide-text-box" class="collapse">
+              <div class="card card-body">
+                <p><img class="img-fluid" src="https://jasper.monster/sharex/firefox_IaU9KpGUqb.jpg" alt="Hide the textbox"></p>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="card mt-4 mb-4">
           <div class="card-body"> 
             <h3>How to hide the background</h3>
-            <p>Add to the end of the browser overlay URL <code>&amp;background=0</code>.</p>
-            <p><a class="btn btn-dark" href="https://jasperfrontend.github.io/soon.html?streamer=xqc&chat=0&background=0" target="_blank">See it in action</a></p>
+            <p>Add to the end of the browser overlay URL: <code>&amp;background=0</code></p>
+            <p class="small">(this will show up with a transparent background in OBS, but probably a white background in your browser)</p>
+            <p><a class="btn btn-primary" href="https://jasperfrontend.github.io/soon.html?streamer=xqc&chat=0&background=0" target="_blank">See it in action</a></p>
+            <p>
+              <a data-bs-toggle="collapse" href="#hide-background" role="button" aria-expanded="false" aria-controls="collapseExample">
+                Toggle Screenshot
+              </a>
+            </p>
+            <div id="hide-background" class="collapse">
+              <div class="card card-body">
+                <p><img class="img-fluid" src="https://jasper.monster/sharex/firefox_jpFTo90CGY.png" alt="Hide the background"></p>
+              </div>
+            </div>
           </div>
         </div>
         <div class="card mt-4 mb-4">
           <div class="card-body"> 
             <h3>How to change text in the textbox</h3>
-            <p>Add to the end of the browser overlay URL <code>&amp;text=Any custom text here</code>.</p>
-            <p><a class="btn btn-dark" href="https://jasperfrontend.github.io/soon.html?streamer=xqc&chat=0&background=0&text=Any%20custom%20text%20here" target="_blank">See it in action</a></p>
+            <p>Add to the end of the browser overlay URL: <code>&amp;text=Any custom text here</code></p>
+            <p><a class="btn btn-primary" href="https://jasperfrontend.github.io/soon.html?streamer=xqc&chat=0&background=0&text=Any%20custom%20text%20here" target="_blank">See it in action</a></p>
+            <p>
+              <a data-bs-toggle="collapse" href="#change-text" role="button" aria-expanded="false" aria-controls="collapseExample">
+                Toggle Screenshot
+              </a>
+            </p>
+            <div id="change-text" class="collapse">
+              <div class="card card-body">
+                <p><img class="img-fluid" src="https://jasper.monster/sharex/firefox_qvX6eya1G7.jpg" alt="Change textbox text"></p>
+              </div>
+            </div>
           </div>
         </div>
         <div class="card mt-4 mb-4">
           <div class="card-body"> 
-            <h3>How to hide the clips player, but keep the live chat?</h3>
-            <p>Add to the end of the browser over URL <code>&amp;clips=0</code> and remove <code>&amp;chat=0</code> from your URL.</p>
-            <p><a class="btn btn-dark" href="https://jasperfrontend.github.io/soon.html?streamer=xqc&background=0&clips=0" target="_blank">See it in action</a></p>
+            <h3>How to hide the clips player, but keep the live chat</h3>
+            <p>Add to the end of the browser over URL: <code>&amp;clips=0</code> and remove <code>&amp;chat=0</code> from your URL.</p>
+            <p><a class="btn btn-primary" href="https://jasperfrontend.github.io/soon.html?streamer=xqc&background=0&clips=0" target="_blank">See it in action</a></p>
+            <p>
+              <a data-bs-toggle="collapse" href="#hide-player-keep-chat" role="button" aria-expanded="false" aria-controls="collapseExample">
+                Toggle Screenshot
+              </a>
+            </p>
+            <div id="hide-player-keep-chat" class="collapse">
+              <div class="card card-body">
+                <p><img class="img-fluid" src="https://jasper.monster/sharex/firefox_54QxC7RYII.png" alt="Hide player, keep chat on screen"></p>
+              </div>
+            </div>
+            
           </div>
         </div>
         <div class="card mt-4 mb-4">
           <div class="card-body"> 
             <h3>How to show just the textbox</h3>
-            <p>Hide everything else, like so <code>&amp;chat=0&amp;background=0&amp;clips=0</code></p>
-            <p><a class="btn btn-dark" href="https://jasperfrontend.github.io/soon.html?background=0&clips=0&chat=0" target="_blank">See it in action</a></p>
+            <p>Hide everything else, like so: <code>&amp;chat=0&amp;background=0&amp;clips=0&amp;logo=0</code></p>
+            <p><a class="btn btn-primary" href="https://jasperfrontend.github.io/soon.html?background=0&clips=0&chat=0" target="_blank">See it in action</a></p>
+            <p>
+              <a data-bs-toggle="collapse" href="#show-just-textbox" role="button" aria-expanded="false" aria-controls="collapseExample">
+                Toggle Screenshot
+              </a>
+            </p>
+            <div id="show-just-textbox" class="collapse">
+              <div class="card card-body">
+                <p><img class="img-fluid" src="https://jasper.monster/sharex/firefox_xHFO5imJc4.png" alt="Show just the textbox"></p>
+              </div>
+            </div>
+            
           </div>
         </div>
         <div class="card mt-4 mb-4">
