@@ -34,40 +34,76 @@
           <li>Easy to embed in your OBS as a Browser Source</li>
         </ul>
 
-        <h2>How to use?</h2>
-        <p><a href="https://github.com/jasperfrontend/jasperfrontend.github.io/archive/refs/heads/main.zip">Download the code</a> and extract the .zip file to a location on your computer.</p>
-        <p>Browse to the folder that you just extracted from the .zip file and open soon.html in your web browser.</p>
-        <h2>How to show the Twitch Clips Player</h2>
-        <p>Change the URL in your browser overlay from <code>soon.html</code> to <code>soon.html?streamer=YourTwitchName</code>, replacing
-        <kbd>YourTwitchName</kbd> with your actual Twitch username.</p>
-        <p><a class="btn btn-dark" href="https://jasperfrontend.github.io/soon.html?streamer=xqc" target="_blank">See it in action</a></p>
-        <h2>How to hide the live chat box</h2>
-        <p>Add to the end of the browser overlay URL <code>&amp;chat=0</code>.</p>
-        <p><a class="btn btn-dark" href="https://jasperfrontend.github.io/soon.html?streamer=xqc&chat=0" target="_blank">See it in action</a></p>
-        <h2>How to hide the textbox</h2>
+        <div class="card mt-4 mb-4">
+          <div class="card-body">  
+            <h2>How to use?</h2>
+            <p><a href="https://github.com/jasperfrontend/jasperfrontend.github.io/archive/refs/heads/main.zip">Download the code</a> and extract the .zip file to a location on your computer.</p>
+            <p>Browse to the folder that you just extracted from the .zip file and open soon.html in your web browser. Nothing will show up, but we're going to change that! Please read on.</p>
+          </div>
+        </div>
+        <div class="card mt-4 mb-4">
+          <div class="card-body"> 
+            <h3>How to show the Twitch Clips Player</h3>
+            <p>Change the URL in your browser overlay from <code>soon.html</code> to <code>soon.html?streamer=YourTwitchName</code>, replacing
+            <kbd>YourTwitchName</kbd> with your actual Twitch username.</p>
+            <p><a class="btn btn-dark" href="https://jasperfrontend.github.io/soon.html?streamer=xqc" target="_blank">See it in action</a></p>
+          </div>
+        </div>
+        <div class="card mt-4 mb-4">
+          <div class="card-body"> 
+            <h3>How to hide the live chat box</h3>
+            <p>Add to the end of the browser overlay URL <code>&amp;chat=0</code>.</p>
+            <p><a class="btn btn-dark" href="https://jasperfrontend.github.io/soon.html?streamer=xqc&chat=0" target="_blank">See it in action</a></p>
+          </div>
+        </div>
+        <div class="card mt-4 mb-4">
+          <div class="card-body"> 
+        <h3>How to hide the textbox</h3>
         <p>Add to the end of the browser overlay URL <code>&amp;textbox=0</code>.</p>
         <p><a class="btn btn-dark" href="https://jasperfrontend.github.io/soon.html?streamer=xqc&chat=0&textbox=0" target="_blank">See it in action</a></p>
-        <h2>How to hide the background</h2>
-        <p>Add to the end of the browser overlay URL <code>&amp;background=0</code>.</p>
-        <p><a class="btn btn-dark" href="https://jasperfrontend.github.io/soon.html?streamer=xqc&chat=0&background=0" target="_blank">See it in action</a></p>
-        <h2>How to change text in the textbox</h2>
-        <p>Add to the end of the browser overlay URL <code>&amp;text=Any custom text here</code>.</p>
-        <p><a class="btn btn-dark" href="https://jasperfrontend.github.io/soon.html?streamer=xqc&chat=0&background=0&text=Any%20custom%20text%20here" target="_blank">See it in action</a></p>
-        <h2>How to hide the clips player, but keep the live chat?</h2>
-        <p>Add to the end of the browser over URL <code>&amp;clips=0</code> and remove <code>&amp;chat=0</code> from your URL.</p>
-        <p><a class="btn btn-dark" href="https://jasperfrontend.github.io/soon.html?streamer=xqc&background=0&clips=0" target="_blank">See it in action</a></p>
-        <h2>How to show just the textbox</h2>
-        <p>Hide everything else, like so <code>&amp;chat=0&amp;background=0&amp;clips=0</code></p>
-        <p><a class="btn btn-dark" href="https://jasperfrontend.github.io/soon.html?background=0&clips=0&chat=0" target="_blank">See it in action</a></p>
-        <h2>How to add to OBS</h2>
-        <p>Add a new Browser Source to your OBS. Keep "Local file" unchecked and paste in the link directly as you see it in your webbrowser, for example:</p>
-        <p><code>file:///E:/Dev/code/obs/jasperfrontend/soon.html?streamer=xqc&chat=0</code></p>
-        <p>Set the dimensions of the browser source to 1920 width and 1080 height.</p>
+        </div>
+        </div>
+        <div class="card mt-4 mb-4">
+          <div class="card-body"> 
+            <h3>How to hide the background</h3>
+            <p>Add to the end of the browser overlay URL <code>&amp;background=0</code>.</p>
+            <p><a class="btn btn-dark" href="https://jasperfrontend.github.io/soon.html?streamer=xqc&chat=0&background=0" target="_blank">See it in action</a></p>
+          </div>
+        </div>
+        <div class="card mt-4 mb-4">
+          <div class="card-body"> 
+            <h3>How to change text in the textbox</h3>
+            <p>Add to the end of the browser overlay URL <code>&amp;text=Any custom text here</code>.</p>
+            <p><a class="btn btn-dark" href="https://jasperfrontend.github.io/soon.html?streamer=xqc&chat=0&background=0&text=Any%20custom%20text%20here" target="_blank">See it in action</a></p>
+          </div>
+        </div>
+        <div class="card mt-4 mb-4">
+          <div class="card-body"> 
+            <h3>How to hide the clips player, but keep the live chat?</h3>
+            <p>Add to the end of the browser over URL <code>&amp;clips=0</code> and remove <code>&amp;chat=0</code> from your URL.</p>
+            <p><a class="btn btn-dark" href="https://jasperfrontend.github.io/soon.html?streamer=xqc&background=0&clips=0" target="_blank">See it in action</a></p>
+          </div>
+        </div>
+        <div class="card mt-4 mb-4">
+          <div class="card-body"> 
+            <h3>How to show just the textbox</h3>
+            <p>Hide everything else, like so <code>&amp;chat=0&amp;background=0&amp;clips=0</code></p>
+            <p><a class="btn btn-dark" href="https://jasperfrontend.github.io/soon.html?background=0&clips=0&chat=0" target="_blank">See it in action</a></p>
+          </div>
+        </div>
+        <div class="card mt-4 mb-4">
+          <div class="card-body"> 
+            <h3>How to add to OBS</h3>
+            <p>Add a new Browser Source to your OBS. Keep "Local file" unchecked and paste in the link directly as you see it in your webbrowser, for example:</p>
+            <p><code>file:///E:/Dev/code/obs/jasperfrontend/soon.html?streamer=xqc&chat=0</code></p>
+            <p>Set the dimensions of the browser source to <strong>1920</strong> width and <strong>1080</strong> height.</p>
+          </div>
+        </div>
       </div>
     </div>
     <div class="row">
       <div class="col">
-        <footer class="mt-4 mb-4">Created by JasperDiscovers. <a href="https://github.com/jasperfrontend/jasperfrontend.github.io" target="_blank">View on Github</a>.</footer>
+        <footer class="mt-4 mb-4">Created by JasperDiscovers. <a href="https://github.com/jasperfrontend/jasperfrontend.github.io" target="_blank">View on Github</a> | <a href="https://github.com/users/jasperfrontend/projects/1/views/1" target="_blank">View Project Log</a></footer>
       </div>
     </div>
   </div>
