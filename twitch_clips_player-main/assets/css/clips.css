@@ -18,7 +18,9 @@ html, body {
 }
 
 video {
-    max-width: 100vw;
+    max-width: calc(100vw - 2em);
+    max-height: calc(100vh - 4em);
+    margin: 2em;
     border-radius: 12px;
 }
 
