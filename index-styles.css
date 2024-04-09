@@ -1,0 +1,9 @@
+.highlight {
+	background-color: #f8f9fa;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+#copy-source {
+  display: none;
+}
