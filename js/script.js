@@ -17,7 +17,7 @@ const chatBox = document.getElementById("chat-iframe");
 const textHeading = document.querySelector("#starting-soon h1");
 const clipsPlayer = document.querySelector(".clips-player");
 
-if(logo) {
+if(logo === "0") {
     antiscuffLogo.classList.add("hidden");    
 }
 if(streamer) {
@@ -26,17 +26,17 @@ if(streamer) {
     videoPlayer.src = videoPlayerSrc;
     chatBox.src = chatBoxSrc;
 }
-if(textbox) {
+if(textbox == 0) {
     startingSoon.classList.add("hidden");
 }
-if(padding) {
+if(padding == 0) {
     document.body.classList.add("no-padding");
 }
-if(chat) {
+if(chat == 0) {
     chatContainer.classList.add("hidden");
     chatBox.classList.add("hidden");
 }
-if(background) {
+if(background == 0) {
     gradientBackground.classList.add("hidden");
     var root = document.getElementsByTagName( 'html' )[0];
     root.setAttribute( 'class', 'background-hidden' );
@@ -44,7 +44,7 @@ if(background) {
 if(text) {
     textHeading.innerHTML = text;
 }
-if(clips) {
+if(clips == 0) {
     clipsPlayer.classList.add("hidden");
     videoPlayer.src = "";
 
