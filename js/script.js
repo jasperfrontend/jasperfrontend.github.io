@@ -2,7 +2,7 @@ const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const logo = urlParams.get("logo");
 const background = urlParams.get("background");
-const channel = urlParams.get("channel");
+const channel = urlParams.get("channel") || urlParams.get("streamer");
 const textbox = urlParams.get("textbox");
 const padding = urlParams.get("padding");
 const text = urlParams.get("text");
@@ -20,12 +20,7 @@ const clipsPlayer = document.querySelector(".clips-player");
 if(logo === "0") {
     antiscuffLogo.classList.add("hidden");    
 }
-// if(streamer) {
-//     const videoPlayerSrc = "./twitch_clips_player-main/clips.html?channel="+streamer+"&limit=50&dateRange=0&shuffle=true&showText=false&customMsg=&showDetails=false&detailsText=&mainAccount="+streamer+"&so=false&command=&modOnly=false&customText=&showFollowing=false&streamerOnly=false&gameTitle=&ref=&clientId=";
-//     const chatBoxSrc = "https://www.giambaj.it/twitch/jchat/v2/?channel="+streamer+"&size=1&font=2";
-//     videoPlayer.src = videoPlayerSrc;
-//     chatBox.src = chatBoxSrc;
-// }
+
 if(textbox == 0) {
     startingSoon.classList.add("hidden");
 }
