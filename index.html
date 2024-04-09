@@ -23,6 +23,54 @@
             <p><span class="badge bg-success">NEW</span> easily configure your ideal overlay with the configurator! <a class="btn btn-sm btn-success" href="#configurator">Configure your OBS overlay</a></p>
           </div>
         </div>
+
+        <div class="card mt-4 mb-4" id="configurator">
+          <div class="card-body"> 
+            <h3>OBS Clip Player Overlay Configurator</h3>
+            <p><span class="badge bg-success">NEW</span> easily configure your ideal overlay with this handy-dandy configurator.</p>
+            <form id="configuratorform">
+              <div class="mb-3">
+                <label for="streamer" class="form-label">Your Twitch Username</label>
+                <input type="text" class="form-control" id="streamer" placeholder="xQc">
+              </div>
+              <!-- <div class="mb-3">
+                <input type="checkbox" class="form-check-input" id="logo">
+                <label for="logo" class="form-label form-check-label">Hide the AntiScuff logo</label>
+              </div> -->
+              <div class="mb-3">
+                <input type="checkbox" class="form-check-input" id="chat">
+                <label for="chat" class="form-label form-check-label">Hide the live chat box</label>
+              </div>
+              <div class="mb-3">
+                <input type="checkbox" class="form-check-input" id="textbox">
+                <label for="textbox" class="form-label form-check-label">Hide the text box</label>
+              </div>
+              <div class="mb-3">
+                <label for="text" class="form-label">Add custom text to the textbox (if not hidden)</label>
+                <input type="text" class="form-control" id="text" placeholder="Starting soon!">
+              </div>
+              <div class="mb-3">
+                <input type="checkbox" class="form-check-input" id="background">
+                <label for="background" class="form-label form-check-label">Hide the background</label>
+              </div>
+              <div class="mb-3">
+                <input type="checkbox" class="form-check-input" id="clips">
+                <label for="clips" class="form-label form-check-label">Hide the clips player</label>
+              </div>
+              <div class="mb-3">
+                <input type="checkbox" class="form-check-input" id="shuffle">
+                <label for="shuffle" class="form-label form-check-label">Play clips randomly</label>
+              </div>
+              <div class="mb-3">
+                <label for="yourOverlayUrl" class="form-label">Your Overlay URL <span class="badge bg-secondary">click button to copy</span></label>
+                <input type="text" class="form-control mb-4" id="yourOverlayUrl" readonly placeholder="Your OBS Overlay URL will appear here">
+
+                <button class="btn btn-success btn-block" onclick="copyToClipboard();return false;">Copy My OBS Overlay URL</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
         <h2>Default Layout</h2>
         <p><img class="img-fluid" src="https://jasper.monster/sharex/xqc-example.png" alt="OBS Twitch Clips Player"></p>
         <h2>Features</h2>
@@ -194,48 +242,7 @@
             <p>Set the dimensions of the browser source to <strong>1920</strong> width and <strong>1080</strong> height.</p>
           </div>
         </div>
-        <div class="card mt-4 mb-4" id="configurator">
-          <div class="card-body"> 
-            <h3>Quick Configurator</h3>
-            <p><span class="badge bg-success">NEW</span> easily configure your ideal overlay with this handy-dandy configurator.</p>
-            <form id="configuratorform">
-              <div class="mb-3">
-                <label for="streamer" class="form-label">Your Twitch Username</label>
-                <input type="text" class="form-control" id="streamer" placeholder="xQc">
-              </div>
-              <!-- <div class="mb-3">
-                <input type="checkbox" class="form-check-input" id="logo">
-                <label for="logo" class="form-label form-check-label">Hide the AntiScuff logo</label>
-              </div> -->
-              <div class="mb-3">
-                <input type="checkbox" class="form-check-input" id="chat">
-                <label for="chat" class="form-label form-check-label">Hide the live chat box</label>
-              </div>
-              <div class="mb-3">
-                <input type="checkbox" class="form-check-input" id="textbox">
-                <label for="textbox" class="form-label form-check-label">Hide the text box</label>
-              </div>
-              <div class="mb-3">
-                <label for="text" class="form-label">Add custom text to the textbox (if not hidden)</label>
-                <input type="text" class="form-control" id="text" placeholder="Starting soon!">
-              </div>
-              <div class="mb-3">
-                <input type="checkbox" class="form-check-input" id="background">
-                <label for="background" class="form-label form-check-label">Hide the background</label>
-              </div>
-              <div class="mb-3">
-                <input type="checkbox" class="form-check-input" id="clips">
-                <label for="clips" class="form-label form-check-label">Hide the clips player</label>
-              </div>
-              <div class="mb-3">
-                <label for="yourOverlayUrl" class="form-label">Your Overlay URL <span class="badge bg-success">click button to copy</span></label>
-                <input type="text" class="form-control mb-4" id="yourOverlayUrl" readonly placeholder="Your OBS Overlay URL will appear here">
 
-                <button class="btn btn-success btn-block" onclick="copyToClipboard();return false;">Copy My OBS Overlay URL</button>
-              </div>
-            </form>
-          </div>
-        </div>
         
       </div>
 
@@ -258,7 +265,8 @@
     }
 
     function updateUrl() {
-      const checkedBoxes = document.querySelectorAll('input[type="checkbox"]:checked');
+      const checkedBoxes = document.querySelectorAll('input[type="checkbox"]:not(#shuffle):checked');
+      const shuffle = document.querySelector('input#shuffle:checked');
       const streamerName  = document.getElementById('streamer').value;
       const textInput = document.getElementById('text').value;
       const urlLink = document.getElementById('yourOverlayUrl');
@@ -275,6 +283,9 @@
 
       if (textInput !== '') {
         url += `&text=${textInput}`;
+      }
+      if (shuffle) {
+        url += `&shuffle=true`;
       }
 
       urlLink.value = url;
