@@ -20,12 +20,12 @@ const clipsPlayer = document.querySelector(".clips-player");
 if(logo === "0") {
     antiscuffLogo.classList.add("hidden");    
 }
-if(streamer) {
-    const videoPlayerSrc = "./twitch_clips_player-main/clips.html?channel="+streamer+"&limit=50&dateRange=0&shuffle=true&showText=false&customMsg=&showDetails=false&detailsText=&mainAccount="+streamer+"&so=false&command=&modOnly=false&customText=&showFollowing=false&streamerOnly=false&gameTitle=&ref=&clientId=";
-    const chatBoxSrc = "https://www.giambaj.it/twitch/jchat/v2/?channel="+streamer+"&size=1&font=2";
-    videoPlayer.src = videoPlayerSrc;
-    chatBox.src = chatBoxSrc;
-}
+// if(streamer) {
+//     const videoPlayerSrc = "./twitch_clips_player-main/clips.html?channel="+streamer+"&limit=50&dateRange=0&shuffle=true&showText=false&customMsg=&showDetails=false&detailsText=&mainAccount="+streamer+"&so=false&command=&modOnly=false&customText=&showFollowing=false&streamerOnly=false&gameTitle=&ref=&clientId=";
+//     const chatBoxSrc = "https://www.giambaj.it/twitch/jchat/v2/?channel="+streamer+"&size=1&font=2";
+//     videoPlayer.src = videoPlayerSrc;
+//     chatBox.src = chatBoxSrc;
+// }
 if(textbox == 0) {
     startingSoon.classList.add("hidden");
 }
