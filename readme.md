@@ -2,7 +2,7 @@
 This is an OBS overlay. It plays video thanks to [teklynk/twitch_clips_player](https://github.com/teklynk/twitch_clips_player). 
 
 ## Default implementation
-Add `?streamer=streamernamehere` to the end of the URL to show clips!
+Add `?channel=streamernamehere` to the end of the URL to show clips!
 [https://jasperfrontend.github.io/soon.html?channel=xqc](https://jasperfrontend.github.io/soon.html?channel=xqc)
 
 Remove the logo, change the text, remove the chat, remove the background\*
