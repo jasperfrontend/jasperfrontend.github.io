@@ -96,9 +96,9 @@
         <div class="card mt-4 mb-4">
           <div class="card-body"> 
             <h3>How to show the Twitch Clips Player</h3>
-            <p>Change the URL in your browser overlay from <code>soon.html</code> to <code>soon.html?streamer=YourTwitchName</code>, replacing
+            <p>Change the URL in your browser overlay from <code>soon.html</code> to <code>soon.html?channel=YourTwitchName</code>, replacing
             <kbd>YourTwitchName</kbd> with your actual Twitch username.</p>
-            <p><a class="btn btn-primary" href="https://jasperfrontend.github.io/soon.html?streamer=xqc" target="_blank">See it in action</a></p>
+            <p><a class="btn btn-primary" href="https://jasperfrontend.github.io/soon.html?channel=xqc" target="_blank">See it in action</a></p>
             <p>
               <a data-bs-toggle="collapse" href="#twitch-clip-player" role="button" aria-expanded="false" aria-controls="collapseExample">
                 Toggle Screenshot
@@ -115,7 +115,7 @@
           <div class="card-body"> 
             <h3>How to hide the live chat box</h3>
             <p>Add to the end of the browser overlay URL: <code>&amp;chat=0</code></p>
-            <p><a class="btn btn-primary" href="https://jasperfrontend.github.io/soon.html?streamer=xqc&chat=0" target="_blank">See it in action</a></p>
+            <p><a class="btn btn-primary" href="https://jasperfrontend.github.io/soon.html?channel=xqc&chat=0" target="_blank">See it in action</a></p>
             <p>
               <a data-bs-toggle="collapse" href="#hide-chat-box" role="button" aria-expanded="false" aria-controls="collapseExample">
                 Toggle Screenshot
@@ -132,7 +132,7 @@
           <div class="card-body"> 
             <h3>How to hide the textbox</h3>
             <p>Add to the end of the browser overlay URL: <code>&amp;textbox=0</code></p>
-            <p><a class="btn btn-primary" href="https://jasperfrontend.github.io/soon.html?streamer=xqc&chat=0&textbox=0" target="_blank">See it in action</a></p>
+            <p><a class="btn btn-primary" href="https://jasperfrontend.github.io/soon.html?channel=xqc&chat=0&textbox=0" target="_blank">See it in action</a></p>
             <p>
               <a data-bs-toggle="collapse" href="#hide-text-box" role="button" aria-expanded="false" aria-controls="collapseExample">
                 Toggle Screenshot
@@ -150,7 +150,7 @@
             <h3>How to hide the background</h3>
             <p>Add to the end of the browser overlay URL: <code>&amp;background=0</code></p>
             <p class="small">(this will show up with a transparent background in OBS, but probably a white background in your browser)</p>
-            <p><a class="btn btn-primary" href="https://jasperfrontend.github.io/soon.html?streamer=xqc&chat=0&background=0" target="_blank">See it in action</a></p>
+            <p><a class="btn btn-primary" href="https://jasperfrontend.github.io/soon.html?channel=xqc&chat=0&background=0" target="_blank">See it in action</a></p>
             <p>
               <a data-bs-toggle="collapse" href="#hide-background" role="button" aria-expanded="false" aria-controls="collapseExample">
                 Toggle Screenshot
@@ -167,7 +167,7 @@
           <div class="card-body"> 
             <h3>How to change text in the textbox</h3>
             <p>Add to the end of the browser overlay URL: <code>&amp;text=Any custom text here</code></p>
-            <p><a class="btn btn-primary" href="https://jasperfrontend.github.io/soon.html?streamer=xqc&chat=0&background=0&text=Any%20custom%20text%20here" target="_blank">See it in action</a></p>
+            <p><a class="btn btn-primary" href="https://jasperfrontend.github.io/soon.html?channel=xqc&chat=0&background=0&text=Any%20custom%20text%20here" target="_blank">See it in action</a></p>
             <p>
               <a data-bs-toggle="collapse" href="#change-text" role="button" aria-expanded="false" aria-controls="collapseExample">
                 Toggle Screenshot
@@ -184,7 +184,7 @@
           <div class="card-body"> 
             <h3>How to hide the clips player, but keep the live chat</h3>
             <p>Add to the end of the browser over URL: <code>&amp;clips=0</code> and remove <code>&amp;chat=0</code> from your URL.</p>
-            <p><a class="btn btn-primary" href="https://jasperfrontend.github.io/soon.html?streamer=xqc&background=0&clips=0" target="_blank">See it in action</a></p>
+            <p><a class="btn btn-primary" href="https://jasperfrontend.github.io/soon.html?channel=xqc&background=0&clips=0" target="_blank">See it in action</a></p>
             <p>
               <a data-bs-toggle="collapse" href="#hide-player-keep-chat" role="button" aria-expanded="false" aria-controls="collapseExample">
                 Toggle Screenshot
@@ -218,8 +218,8 @@
         <div class="card mt-4 mb-4">
           <div class="card-body"> 
             <h3>How to show just the live chat</h3>
-            <p>Add your streamer name, hide everything except chat, like so: <code>soon.html?streamer=xqc&amp;background=0&amp;clips=0&amp;textbox=0</code></p>
-            <p><a class="btn btn-primary" href="https://jasperfrontend.github.io/soon.html?streamer=xqc&background=0&clips=0&textbox=0" target="_blank">See it in action</a></p>
+            <p>Add your streamer name, hide everything except chat, like so: <code>soon.html?channel=xqc&amp;background=0&amp;clips=0&amp;textbox=0</code></p>
+            <p><a class="btn btn-primary" href="https://jasperfrontend.github.io/soon.html?channel=xqc&background=0&clips=0&textbox=0" target="_blank">See it in action</a></p>
             <p>
               <a data-bs-toggle="collapse" href="#show-just-chat" role="button" aria-expanded="false" aria-controls="collapseExample">
                 Toggle Screenshot
@@ -237,7 +237,7 @@
           <div class="card-body"> 
             <h3>How to add to OBS</h3>
             <p>Add a new Browser Source to your OBS. Keep "Local file" unchecked and paste in the link directly as you see it in your webbrowser, for example:</p>
-            <p><code>https://jasperfrontend.github.io/soon.html?streamer=xqc&chat=0</code></p>
+            <p><code>https://jasperfrontend.github.io/soon.html?channel=xqc&chat=0</code></p>
             <p>Set the dimensions of the browser source to <strong>1920</strong> width and <strong>1080</strong> height.</p>
           </div>
         </div>
